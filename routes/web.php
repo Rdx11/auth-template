@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::permanentRedirect('/', 'login');
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::middleware('auth')->group(function () {
+    Route::view('/dashboard', 'content.admin.dashboard.index');
+    Route::view('/user', 'content.admin.user.index');
+});
