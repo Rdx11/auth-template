@@ -3,7 +3,7 @@
     <!-- BEGIN: Head -->
     <head>
         <meta charset="utf-8">
-        <link href="dist/images/logo.svg" rel="shortcut icon">
+        <link href="{{ asset('dist/images/logo.svg') }}" rel="shortcut icon">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="LaraXam is free application for administering exams at school">
         <meta name="keywords" content="sourcode exam app, simple exam app">
@@ -11,8 +11,9 @@
         <title>LaraXam|@yield('title')</title>
         
         <!-- BEGIN: CSS Assets-->
-        <link rel="stylesheet" href="dist/css/app.css" />
+        <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}" />
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        @stack('link')
     </head>
 
     <body class="main">
@@ -21,7 +22,7 @@
             <div class="-intro-y top-bar__content bg-white border-theme-3 dark:bg-dark-2 dark:border-dark-2 border-b w-full h-full flex px-5">
                 <!-- BEGIN: Logo -->
                 <a class="hidden md:flex items-center h-full mr-auto" href="http://localhost/page/dashboard">
-                    <img alt="Topson Messenger Tailwind HTML Admin Template" class="h-8" src="dist/images/logo.svg">
+                    <img alt="Topson Messenger Tailwind HTML Admin Template" class="h-8" src="{{ asset('dist/images/logo.svg') }}">
                     <div class="font-medium text-blue-300 ml-2"> <span class="font-medium text-theme-1">Lara</span>Xam </div>
                 </a>
 
@@ -149,11 +150,11 @@
         </div>
 
         <!-- BEGIN: Side Menu -->
-        <div class="side-menu hidden md:block top-0 left-0 fixed w-16 h-screen">
+        <div class="side-menu hidden md:block top-0 left-0 fixed w-16 h-screen overflow-hidden">
             <div class="side-menu__content box border-theme-3 dark:bg-dark-2 dark:border-dark-2 -intro-x border-r w-full h-full pt-16 flex flex-col justify-center overflow-hidden">
                 <a class="-intro-x side-menu__content__link text-gray-600 dark:text-gray-300 relative tooltip py-5 side-menu__content__link--active" href="index.html" data-placement="right" title="Dashboard" data-content="dashboard"> <i data-feather="home" class="w-5 h-5 mx-auto"></i> </a>
                 <a class="-intro-x side-menu__content__link text-gray-600 dark:text-gray-300 relative tooltip py-5" href="index.html" data-placement="right" title="Module" data-content="module"> <i data-feather="book" class="w-5 h-5 mx-auto"></i> </a>
-                <a class="-intro-x side-menu__content__link text-gray-600 dark:text-gray-300 relative tooltip py-5" href="index.html" data-placement="right" title="User" data-content="user"> <i data-feather="user" class="w-5 h-5 mx-auto"></i> </a>
+                <a href="/landing-users" class="-intro-x side-menu__content__link text-gray-600 dark:text-gray-300 relative tooltip py-5" href="index.html" data-placement="right" title="User" data-content="user"> <i data-feather="user" class="w-5 h-5 mx-auto"></i> </a>
                 <a class="-intro-x side-menu__content__link text-gray-600 dark:text-gray-300 relative tooltip py-5" href="index.html" data-placement="right" title="Permission" data-content="permission"> <i data-feather="tool" class="w-5 h-5 mx-auto"></i> </a>
                 <a class="-intro-x side-menu__content__link text-gray-600 dark:text-gray-300 relative tooltip py-5" href="index.html" data-placement="right" title="Setting" data-content="setting"> <i data-feather="settings" class="w-5 h-5 mx-auto"></i> </a>
                 <a class="-intro-x side-menu__content__link text-gray-600 dark:text-gray-300 relative tooltip py-5" href="index.html" data-placement="right" title="Trash" data-content="trash"> <i data-feather="trash" class="w-5 h-5 mx-auto"></i> </a>
@@ -164,7 +165,7 @@
         @yield('content')
 
         <!-- BEGIN: JS Assets-->
-        <script src="dist/js/app.js"></script>
+        <script src="{{ asset('dist/js/app.js') }}"></script>
         @stack('script')
     </body>
 </html>

@@ -12,32 +12,23 @@
           <div class="overflow-hidden bg-white shadow-xl dark:bg-gray-800 sm:rounded-lg">
             <div>
               <div class="p-6 bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 sm:px-20">
-                  <div class="mt-8 text-2xl dark:text-gray-200"> Welcome to your Jetstream application! </div>
-                    <div class="mt-6 text-gray-500 dark:text-gray-400"> 
-                        Laravel Jetstream provides a
-                        beautiful, robust starting point for your next Laravel application. Laravel
-                        is designed to help you build your application using a development
-                        environment that is simple, powerful, and enjoyable. We believe you should
-                        love expressing your creativity through programming, so we have spent time
-                        carefully crafting the Laravel ecosystem to be a breath of fresh air. We
-                        hope you love it. 
-                    </div>
+                  <div class="text-2xl font-bold text-blue-300"> <strong class="text-theme-1">Manage</strong> User</div>
               </div>
               <div class="grid grid-cols-1 bg-gray-200 bg-opacity-25 dark:bg-gray-800 md:grid-cols-2">
                 <div class="p-6">
                   <div class="flex items-center">
                     <img src="{{ asset('dist/images/svg/student.svg') }}" class="w-10 h-10" alt="student icon">
                     <div class="ml-4 text-xl font-semibold leading-7 text-gray-600 dark:text-gray-200">
-                        <a href="https://laravel.com/docs">Student</a>
+                        Student
                     </div>
                   </div>
                   <div class="ml-12">
-                    <div class="mt-2 text-sm text-gray-500 dark:text-gray-400"> Laravel has
-                        wonderful documentation covering every aspect of the framework.
-                        Whether you're new to the framework or have previous experience, we
-                        recommend reading all of the documentation from beginning to end.
+                    <div class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                      you can manage all <strong>student</strong> related data on this page.
+                      (create, read, update, and delete).
+                      but, you can't manage student test results.
                     </div>
-                    <a href="https://laravel.com/docs">
+                    <a href="/students">
                       <div class="flex items-center mt-3 text-sm font-semibold text-theme-1 dark:text-indigo-400 hover:text-blue-300">
                           <div>Manage all Students</div>
                           <div class="ml-1">
@@ -59,10 +50,8 @@
                   </div>
                   <div class="ml-12">
                       <div class="mt-2 text-sm text-gray-500 dark:text-gray-400"> 
-                        Laracasts
-                        offers thousands of video tutorials on Laravel, PHP, and JavaScript
-                        development. Check them out, see for yourself, and massively level
-                        up your development skills in the process. 
+                        you can manage all <strong>teacher</strong> related data on this page.
+                      (create, read, update, and delete).
                       </div>
                       <a href="https://laracasts.com">
                         <div class="flex items-center mt-3 text-sm font-semibold text-theme-1 dark:text-indigo-400 hover:text-blue-300">
@@ -86,11 +75,8 @@
                   </div>
                   <div class="ml-12">
                       <div class="mt-2 text-sm text-gray-500 dark:text-gray-400"> 
-                        Laravel
-                          Jetstream is built with Tailwind, an amazing utility first CSS
-                          framework that doesn't get in your way. You'll be amazed how easily
-                          you can build and maintain fresh, modern designs with this wonderful
-                          framework at your fingertips. 
+                      you can manage all <strong>admin</strong> related data on this page.
+                      (create, read, update, and delete).
                       </div>
                       <a href="https://laracasts.com">
                         <div class="flex items-center mt-3 text-sm font-semibold text-theme-1 dark:text-indigo-400 hover:text-blue-300">
@@ -114,10 +100,8 @@
                     </div>
                     <div class="ml-12">
                       <div class="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                              Authentication and registration views are included with Laravel
-                              Jetstream, as well as support for user email verification and
-                              resetting forgotten passwords. So, you're free to get started what
-                            matters most: building your application. 
+                        you can manage all <strong>users</strong> related data on this page.
+                        (create, read, update, and delete).
                       </div>
                       <a href="https://laracasts.com">
                         <div class="flex items-center mt-3 text-sm font-semibold text-theme-1 dark:text-indigo-400 hover:text-blue-300">

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\Student\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,5 +17,6 @@ Route::permanentRedirect('/', 'login');
 
 Route::middleware('auth')->group(function () {
     Route::view('/dashboard', 'content.admin.dashboard.index');
-    Route::view('/user', 'content.admin.user.index');
+    Route::view('/landing-users', 'content.admin.user.index');
+    Route::resource('students', StudentController::class);
 });
