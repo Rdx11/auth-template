@@ -121,7 +121,7 @@
                         </div>
                         <div class="hidden md:block ml-3">
                             <div class="w-28 truncate font-medium leading-tight">{{ auth()->user()->name }}</div>
-                            <div class="account-dropdown__info text-xs text-gray-600 capitalize">super admin</div>
+                            <div class="account-dropdown__info text-xs text-gray-600 capitalize">{{ auth()->user()->roles->implode('name') }}</div>
                         </div>
                     </a>
                     <div class="dropdown-content dropdown-menu absolute w-56 top-0 right-0">

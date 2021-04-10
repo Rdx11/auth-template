@@ -2,11 +2,20 @@
 
 namespace App\Http\Controllers\Admin\Student;
 
+use App\BusinessLayer\Admin\Student\StudentBusinessLayer;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\StudentRequest;
+use App\Models\Admin\Student;
 class StudentController extends Controller
 {
+    private $studentBusinessLayer, $students;
+    
+    public function __construct()
+    {
+        $this->studentBusinessLayer = new StudentBusinessLayer();
+        $this->students = new Student();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +23,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return view('content.admin.user.student.index');
+        $students = $this->students->getStudentData();
+        return view('content.admin.user.student.index', compact('students'));
     }
 
     /**
@@ -33,9 +43,10 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StudentRequest $request)
     {
-        //
+        $this->studentBusinessLayer->handleStoreStudent($request->validated());
+        return redirect('/students')->with('success', 'student was created');
     }
 
     /**
@@ -44,9 +55,9 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Student $student)
     {
-        //
+        return view('content.admin.user.student.show-student', compact('student'));
     }
 
     /**
@@ -80,6 +91,6 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }

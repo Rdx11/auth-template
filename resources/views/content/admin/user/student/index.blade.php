@@ -10,6 +10,11 @@
         <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
             <div class="align-middle rounded-tl-lg rounded-tr-lg inline-block w-full py-4 overflow-hidden bg-white shadow-lg px-12">
                 <div class="text-2xl font-bold text-blue-300 mb-10 mt-5"> <strong class="text-theme-1">Data</strong> List</div>
+                @if (Session::get('success'))
+                <div class="mb-10">
+                    @include('components.alert.success')
+                </div>
+                @endif
                 <div class="flex justify-between">
                     <div class="inline-flex border-2 rounded w-7/12 px-2 lg:px-6 h-12 bg-transparent">
                         <div class="flex flex-wrap items-stretch w-full h-full mb-6 relative">
@@ -35,40 +40,51 @@
             <table class="min-w-full">
                 <thead>
                     <tr>
-                        <th class="px-6 py-3 text-left leading-4 text-blue-500 tracking-wider">ID</th>
-                        <th class="px-6 py-3 text-left text-sm leading-4 text-blue-500 tracking-wider">Fullname</th>
-                        <th class="px-6 py-3 text-left text-sm leading-4 text-blue-500 tracking-wider">Email</th>
-                        <th class="px-6 py-3 text-left text-sm leading-4 text-blue-500 tracking-wider">Phone</th>
-                        <th class="px-6 py-3 text-left text-sm leading-4 text-blue-500 tracking-wider">Status</th>
-                        <th class="px-6 py-3 text-left text-sm leading-4 text-blue-500 tracking-wider">Created At</th>
-                        <th class="px-6 py-3 text-left text-sm leading-4 text-blue-500 tracking-wider">Action</th>
+                        <th class="px-6 py-3 text-left leading-4 text-blue-500 tracking-wider capitalize">no</th>
+                        <th class="px-6 py-3 text-left text-sm leading-4 text-blue-500 tracking-wider capitalize">exam number</th>
+                        <th class="px-6 py-3 text-left text-sm leading-4 text-blue-500 tracking-wider capitalize">fullname</th>
+                        <th class="px-6 py-3 text-left text-sm leading-4 text-blue-500 tracking-wider capitalize">email</th>
+                        <th class="px-6 py-3 text-left text-sm leading-4 text-blue-500 tracking-wider capitalize">phone</th>
+                        <th class="px-6 py-3 text-left text-sm leading-4 text-blue-500 tracking-wider capitalize">class</th>
+                        <th class="px-6 py-3 text-left text-sm leading-4 text-blue-500 tracking-wider capitalize">majors</th>
+                        <th class="px-6 py-3 text-left text-sm leading-4 text-blue-500 tracking-wider capitalize">address</th>
+                        <th class="px-6 py-3 text-left text-sm leading-4 text-blue-500 tracking-wider capitalize">Action</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white">
+                    @foreach ($students as $index => $student)   
                     <tr>
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-blue-300">
                             <div class="flex items-center">
                                 <div>
-                                    <div class="text-sm font-medium leading-5 text-gray-500">1</div>
+                                    <div class="text-sm font-medium leading-5 text-gray-500">{{ $index + $students->firstItem() }}</div>
                                 </div>
                             </div>
                         </td>
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-blue-300">
-                            <div class="text-sm leading-5 font-medium text-gray-500">Damilare Anjorin</div>
+                            <div class="text-sm leading-5 font-medium text-gray-500">{{ $student->student_exam_number }}</div>
                         </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b font-medium text-gray-500 border-blue-300 text-sm leading-5">damilareanjorin1@gmail.com</td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b font-medium text-gray-500 border-blue-300 text-sm leading-5">+2348106420637</td>
                         <td class="px-6 py-4 whitespace-no-wrap border-b font-medium text-gray-500 border-blue-300 text-sm leading-5">
-                            <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                            <span aria-hidden class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                            <span class="relative text-xs">active</span>
+                            <a href="{{ route('students.show', $student->id) }}" class="text-theme-1 text-underline hover:text-blue-300 capitalize">
+                                {{ $student->first_name.' '.$student->last_name  }}
+                            </a>
+                        </td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b font-medium text-gray-500 border-blue-300 text-sm leading-5">{{ $student->user->email }}</td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b font-medium text-gray-500 border-blue-300 text-sm leading-5">{{ $student->phone }}</td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b font-medium text-gray-500 border-blue-300 text-sm leading-5">
+                                    <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                                    <span aria-hidden class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
+                                    <span class="relative text-xs capitalize">{{ $student->class }}</span>
                         </span>
                         </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-blue-300 font-medium text-gray-500 text-sm leading-5">September 12</td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b font-medium text-gray-500 border-blue-300 text-sm leading-5 capitalize">{{ $student->majors }}</td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b font-medium text-gray-500 border-blue-300 text-sm leading-5 capitalize">{{ $student->address }}</td>
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-blue-300 text-sm leading-5">
-                            <button class="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">View Details</button>
+                            <a class="btn tooltip px-2 py-2 border-yellow-300 border text-yellow-500 rounded transition duration-300 hover:bg-yellow-300 hover:text-white focus:outline-none" title="Edit" data-content="edit"><i data-feather="edit" class="w-5 h-5 mx-auto mr-1"></i></a>
+                            <a class="btn tooltip px-2 py-2 border-red-300 border text-red-500 rounded transition duration-300 hover:bg-red-300 hover:text-white focus:outline-none" title="Delete" data-content="delete" data-toggle="modal" data-target="#destroy"><i data-feather="trash-2" class="w-5 h-5 mx-auto mr-1"></i></a>
                         </td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
             <div class="sm:flex-1 sm:flex sm:items-center sm:justify-between mt-4 work-sans mb-5">
@@ -86,4 +102,9 @@
         </div>
     </div>
 </div>
+@include('components.modal.destroy')
 @endsection
+
+@push('link')
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
+@endpush

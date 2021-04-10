@@ -33,6 +33,7 @@
                             <input name="email" type="email" class="form-control py-3 px-4 auth__input intro-y @error('email') border-2 border-red-400 @enderror" 
                             placeholder="Email"
                             autocomplete="email"
+                            value="{{ old('email') }}"
                             autofocus/>
                             @error('email')
                             <p class="text-red-400 mt-2 ml-1 font-medium">
