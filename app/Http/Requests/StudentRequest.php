@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Admin\Student;
 
 class StudentRequest extends FormRequest
 {
@@ -23,11 +24,17 @@ class StudentRequest extends FormRequest
      */
     public function rules()
     {
+        $student = null;
+
+        if ($this->student) {
+            $student = Student::select('user_id')->where('id', $this->student->id)->first();  
+        }
+
         return [
-            'student_exam_number' => 'required|numeric|unique:students',
+            'student_exam_number' => 'required|numeric|unique:students,student_exam_number,'.optional($this->student)->id,
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required|unique:users',
+            'email' => 'required|unique:users,email,'.optional($student)->user_id,
             'phone' => 'required|numeric',
             'zip_code' => 'numeric',
             'hobby' => 'nullable',
@@ -38,7 +45,7 @@ class StudentRequest extends FormRequest
             'gender' => 'required|boolean',
             'place_of_birth' => 'required',
             'date_of_birth' => 'required|date',
-            'photo' => 'required|file',
+            'photo' => $student === null ? 'required|file' : 'nullable',
         ];
     }
 }

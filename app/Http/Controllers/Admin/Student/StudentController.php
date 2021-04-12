@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\StudentRequest;
 use App\Models\Admin\Student;
+use App\Models\User;
 class StudentController extends Controller
 {
     private $studentBusinessLayer, $students;
@@ -66,9 +67,9 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Student $student)
     {
-        //
+        return view('content.admin.user.student.edit-student', compact('student'));
     }
 
     /**
@@ -78,9 +79,10 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StudentRequest $request, Student $student)
     {
-        //
+        $this->studentBusinessLayer->handleUpdateStudent($request->validated(), $student);
+        return redirect('/students')->with('success', 'student was updated');
     }
 
     /**

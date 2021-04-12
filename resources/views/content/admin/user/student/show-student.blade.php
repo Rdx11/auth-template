@@ -16,7 +16,7 @@
                     <div class="bg-white p-3 border-t-4 border-blue-300">
                         <div class="image overflow-hidden">
                             <img class="h-auto w-full mx-auto"
-                                src="{{ Storage::url($student->photo) }}"
+                                src="{{ $student->photo != null ? Storage::url($student->photo) : asset('dist/images/default-profile.png') }}"
                                 alt="">
                         </div>
                         <ul

@@ -80,7 +80,7 @@
                         <td class="px-6 py-4 whitespace-no-wrap border-b font-medium text-gray-500 border-blue-300 text-sm leading-5 capitalize">{{ $student->majors }}</td>
                         <td class="px-6 py-4 whitespace-no-wrap border-b font-medium text-gray-500 border-blue-300 text-sm leading-5 capitalize">{{ $student->address }}</td>
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-blue-300 text-sm leading-5">
-                            <a class="btn tooltip px-2 py-2 border-yellow-300 border text-yellow-500 rounded transition duration-300 hover:bg-yellow-300 hover:text-white focus:outline-none" title="Edit" data-content="edit"><i data-feather="edit" class="w-5 h-5 mx-auto mr-1"></i></a>
+                            <a href="{{ route('students.edit', $student->id) }}" class="btn tooltip px-2 py-2 border-yellow-300 border text-yellow-500 rounded transition duration-300 hover:bg-yellow-300 hover:text-white focus:outline-none" title="Edit" data-content="edit"><i data-feather="edit" class="w-5 h-5 mx-auto mr-1"></i></a>
                             <a class="btn tooltip px-2 py-2 border-red-300 border text-red-500 rounded transition duration-300 hover:bg-red-300 hover:text-white focus:outline-none" title="Delete" data-content="delete" data-toggle="modal" data-target="#destroy"><i data-feather="trash-2" class="w-5 h-5 mx-auto mr-1"></i></a>
                         </td>
                     </tr>
