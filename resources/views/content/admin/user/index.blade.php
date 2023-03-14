@@ -1,7 +1,7 @@
 @extends('master-template.master')
 
 @section('title')
-    Create data student
+    Create
 @endsection
 
 @section('content')
